@@ -1,18 +1,31 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-</head>
-<body>
-    <h1>Login</h1>
 
-        <form method="POST">{% csrf_token %}
-            <input type="text" autocomplete="off" name="username"></input>
-            <input type="password" autocomplete="off" name="senha"></input>
-            <button type="submit" value="logar">Confirmar</button>
-        </form>
+    <! Font Inter ->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <! CSS ->
+    <link rel="stylesheet" href="{% static "css/global.css" %}">
+    <link rel="stylesheet" href="{% static "css/login.css" %}">
+</head>
+<body class="flex center vcenter" style='background-image: url({% static "src/Cozinheiros.png" %})'>
+
+        <div class="login flex column">
+            <img class="align-self" src="{% static "src/LHC.png" %}" alt="">
+
+            <form class="flex column" method="POST">{% csrf_token %}
+                <input type="text" autocomplete="off" name="username" placeholder="Login"></input>
+                <input type="password" autocomplete="off" name="senha" placeholder="Senha"></input>
+                <button type="submit" value="logar">Confirmar</button>
+            </form>
+        </div>
 
 </body>
 </html>

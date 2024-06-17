@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+*{
+    font-family: 'Inter';
+}
+
+body, * {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.center {
+    justify-content: center;
+}
+
+.vcenter {
+    align-items: center;
+}
+
+.column {
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+input {
+    height: 1.5rem;
+}
+
+.align-items {
+    align-items: center;
+}
+
+.align-self {
+    align-self: center;
+}
