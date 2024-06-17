@@ -8,7 +8,7 @@ body {
 
 .login {
     width: 30rem;
-    height: 65%;
+    height: 80%;
     background-color: rgba(219, 219, 219, 0.8);
     backdrop-filter: opacity(80%);
     border-radius: 5px;
