@@ -1,5 +1,51 @@
 body {
     background-color: #D9B49C;
+    height: 100vh;
+}
+
+table {
+    width: 90%;
+    height: 90%;
+    background-color: #91542E;
+    border-radius: 15px;
+}
+
+th {
+    color: white;
+    font-size: 2rem;
+    background-color: #CA6E33;
+    padding: .7rem 0;
+    width: 23%;
+    border-radius: 10px;
+}
+
+tr {
+    padding: 1rem 1rem 0 1rem;
+}
+
+.data {
+    height: 82.5%;
+}
+
+td {
+    height: 100%;
+    background-color: #F8F2E7;
+    border-radius: 15px;
+}
+
+td {
+    width: 23%;
+}
+
+.data > td {
+    padding-top: .7rem;
+}
+
+.pedido {
+    padding: .7rem;
+    background-color: #DCDDDE;
+    border-radius: 15px;
+    width: 85%;
 }
 
 .modal-backdrop {
@@ -53,11 +99,6 @@ textarea{
 li {
     font-weight: bold;
     text-decoration: underline;
-}
-
-.titles {
-    display: flex;
-    justify-content: space-around;
 }
 
 .data {
