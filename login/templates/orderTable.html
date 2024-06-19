@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="{% static "css/global.css" %}">
     <link rel="stylesheet" href="{% static "css/table.css" %}">
+    <link rel="stylesheet" href="{% static "css/modal.css" %}">
 
     <title>Pedidos</title>
 
@@ -25,47 +26,91 @@
         </tr>
         <!-- Dados -->
         <tr class="data">
-            <td class="flex center vstart">
-                <div class="pedido pendente">
-                    <div>
-                        <h3>Mesa 04</h3>
-                        <h4>Genivaldo</h4>
+            <td class="flex">
+                <div class="pedido pendente flex space-between vcenter column">
+                    <div class="pedido-header flex space-between">
+                        <div class="left column">
+                            <h2># 21</h2>
+                            <h4>Mesa 05</h4>
+                        </div>
+                        <div class="right column">
+                            <div class="timer-box flex vcenter">
+                                <img src="{% static "src/timer.png" %}" alt="Timer-Icon">
+                                <p>0h20min</p>
+                            </div>
+                            <h4>Genivaldo</h4>
+                        </div>
                     </div>
-                    <button onclick="openModal()">Detalhes</button>
-                    <button>Deletar</button>
+
+                    <div class="desc">
+                        <div class="buttons flex space-evenly">
+                            <button class="desc-button" onclick="openModal()">Detalhes</button>
+                            <button class="delete-button">Delete</button>
+                        </div>
+                    </div>
                 </div>
             </td>
 
-            <td class="flex center vstart">
-                <div class="pedido preparo">
-                    <div>
-                        <h3>Mesa 04</h3>
-                        <h4>Genivaldo</h4>
+            <td class="flex">
+                <div class="pedido preparo flex space-between vcenter column">
+                    <div class="pedido-header flex space-between">
+                        <div class="left column">
+                            <h2># 21</h2>
+                            <h4>Mesa 05</h4>
+                        </div>
+                        <div class="right column">
+                            <div class="timer-box flex vcenter">
+                                <img src="{% static "src/timer.png" %}" alt="Timer-Icon">
+                                <p>0h20min</p>
+                            </div>
+                            <h4>Genivaldo</h4>
+                        </div>
                     </div>
-                    <button onclick="openModal()">Detalhes</button>
-                    <button>Deletar</button>
+
+                    <div class="desc">
+                        <div class="buttons flex space-evenly">
+                            <button class="desc-button" onclick="openModal()">Detalhes</button>
+                            <button class="delete-button">Delete</button>
+                        </div>
+                    </div>
                 </div>
             </td>
 
-            <td class="flex center vstart">
-                <div class="pedido pronto">
-                    <div>
-                        <h3>Mesa 04</h3>
-                        <h4>Genivaldo</h4>
+            <td class="flex">
+                <div class="pedido pronto flex space-between vcenter column">
+                    <div class="pedido-header flex space-between">
+                        <div class="left column">
+                            <h2># 21</h2>
+                            <h4>Mesa 05</h4>
+                        </div>
+                        <div class="right column">
+                            <div class="timer-box flex vcenter">
+                                <img src="{% static "src/timer.png" %}" alt="Timer-Icon">
+                                <p>0h20min</p>
+                            </div>
+                            <h4>Genivaldo</h4>
+                        </div>
                     </div>
-                    <button onclick="openModal()">Detalhes</button>
-                    <button>Deletar</button>
+
+                    <div class="desc">
+                        <div class="buttons flex space-evenly">
+                            <button class="desc-button" onclick="openModal()">Detalhes</button>
+                            <button class="delete-button">Delete</button>
+                        </div>
+                    </div>
                 </div>
             </td>
 
-            <td class="flex center vstart">
-                <div class="pedido entregue">
-                    <div>
-                        <h3>Mesa 04</h3>
-                        <h4>Genivaldo</h4>
+            <td class="flex">
+                <div class="pedido entregue flex space-between vcenter">
+                    <div class="left column">
+                        <h2>Maria</h2>
+                        <h4>Pedido</h4>
                     </div>
-                    <button onclick="openModal()">Detalhes</button>
-                    <button>Deletar</button>
+                    <div class="right column">
+                        <h2>#21</h2>
+                        <h4>#12312413</h4>
+                    </div>
                 </div>
             </td>
         </tr>
@@ -78,7 +123,7 @@
 
             <div>
                 <h3>Pratos</h3>
-                <ul class="column">
+                <ul class="table-column">
                     <li id="trocarTexto" onmouseover="trocarTexto(true)" onmouseout="trocarTexto(false)">Nome Prato</li>
                     <li>Nome Prato</li>
                     <li>Nome Prato</li>
@@ -105,38 +150,10 @@
         </div>
     </div>
 
-    <script>
-        // Função para abrir o modal
-        function openModal() {
-            document.getElementById('modalBackdrop').style.display = 'flex';
-        }
+    <!-- ModalFunc -->
+    <script src="{% static "js/modalFunctions.js" %}"></script>
 
-        // Função para fechar o modal
-        function closeModal() {
-            document.getElementById('modalBackdrop').style.display = 'none';
-        }
-
-        var textoOriginal = "";
-
-        function trocarTexto(sobre) {
-        // Seleciona o elemento pelo ID
-        var elemento = document.getElementById('trocarTexto');
-
-        // Verifica se estamos passando o mouse sobre o elemento
-        if (sobre) {
-            // Armazena o texto original apenas uma vez
-            if (textoOriginal === "") {
-                textoOriginal = elemento.innerHTML;
-            }
-            // Troca o texto para o novo texto
-            elemento.innerHTML = "ID PRATO";
-            elemento.classList.add('highlighted'); // Adiciona a classe de destaque
-        } else {
-            // Se não estiver mais sobre o elemento, restaura o texto original
-            elemento.innerHTML = textoOriginal;
-            elemento.classList.remove('highlighted'); // Remove a classe de destaque
-        }
-    }
-    </script>
+    <!-- TableFunc -->
+    <script src="{% static "js/tableFunctions.js" %}"></script>
 </body>
 </html>

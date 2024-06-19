@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+:root {
+    --ok-time: #4A8500;
+    --warning-time: #FFA471;
+    --hurry-time: #FF7171;
+
+}
+
 *{
     font-family: 'Inter';
 }
@@ -48,4 +55,8 @@ input {
 
 .space-between {
     justify-content: space-between;
+}
+
+.space-evenly {
+    justify-content: space-evenly;
 }
