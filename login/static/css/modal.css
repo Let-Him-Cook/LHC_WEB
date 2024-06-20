@@ -1,38 +1,77 @@
 .modal-backdrop {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
     display: none; /* Inicialmente escondido */
-    justify-content: center;
-    align-items: center;
 }
 
 /* Estilo para o conteúdo do modal */
-.modal-content {
+.modal-box {
     background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
+    border: solid 5px #91542E;
+    padding: 1.2rem;
+    border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     text-align: start;
-    width: 50%;
-    gap: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.desc-column {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    width: 75%;
+    height: 75%;
     gap: 1rem;
 }
 
-.table-column {
-    columns: 4;
+.modal-header {
+    height: 5.5rem;
+    border-radius: 10px;
+    padding: 1.2rem;
+    background: linear-gradient(
+        to right,
+        rgba(175, 191, 198, 0.9),  /* #AFBFC6 with 90% opacity */
+        rgb(227, 228, 230),  /* #DCDDDE with 100% opacity */
+        rgba(175, 191, 198, 0.9)   /* #AFBFC6 with 90% opacity */
+      );
+}
+
+.modal-header .column {
+    gap: 7px;
+}
+
+.modal-header h1 {
+    font-size: 36px;
+}
+
+.modal-header p {
+    font-weight: bold;
+}
+
+.modal-header .mright {
+    text-align: end;
+}
+
+.modal-column {
+    border-radius: 10px;
+    height: 25rem;
+    gap: 1rem;
+}
+
+.modal-desc {
+    gap: 1rem;
+    width: 72%;
+    background: linear-gradient(
+        to right,
+        rgba(175, 191, 198, 0.9),  /* #AFBFC6 with 90% opacity */
+        rgb(227, 228, 230),  /* #DCDDDE with 100% opacity */
+        rgba(175, 191, 198, 0.9)   /* #AFBFC6 with 90% opacity */
+      );
+}
+
+.modal-status {
+    width: 26%;
+    background: linear-gradient(
+        to right,
+        rgba(175, 191, 198, 0.9),  /* #AFBFC6 with 90% opacity */
+        rgb(227, 228, 230),  /* #DCDDDE with 100% opacity */
+        rgba(175, 191, 198, 0.9)   /* #AFBFC6 with 90% opacity */
+      );
 }
 
 textarea{
