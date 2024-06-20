@@ -49,33 +49,87 @@
 
 .modal-column {
     border-radius: 10px;
-    height: 25rem;
+    height: 27rem;
     gap: 1rem;
 }
 
 .modal-desc {
     gap: 1rem;
-    width: 72%;
+    width: 76%;
     background: linear-gradient(
         to right,
         rgba(175, 191, 198, 0.9),  /* #AFBFC6 with 90% opacity */
         rgb(227, 228, 230),  /* #DCDDDE with 100% opacity */
         rgba(175, 191, 198, 0.9)   /* #AFBFC6 with 90% opacity */
       );
+    border-radius: 10px;
+}
+
+.mtable{
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 15px 0 15px;
+    padding: 10px;
+    height: 60%;
+    gap: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+
+.mtable thead, .mtable tbody {
+    display: grid;
+}
+
+.mtable tbody {
+    gap: 1.3rem;
+}
+
+.mtable tr {
+    padding: 0;
+}
+
+.mtable th {
+    all: unset;
+    font-weight: bold;
+}
+
+.mtable td {
+    all: unset;
+    font-weight: bold;
+}
+
+.total-box {
+    font-size: 28px;
+    margin: 0 20px 20px 20px;
 }
 
 .modal-status {
-    width: 26%;
+    width: 22%;
     background: linear-gradient(
         to right,
         rgba(175, 191, 198, 0.9),  /* #AFBFC6 with 90% opacity */
         rgb(227, 228, 230),  /* #DCDDDE with 100% opacity */
         rgba(175, 191, 198, 0.9)   /* #AFBFC6 with 90% opacity */
       );
+    border-radius: 10px;
+    padding: 10px;
 }
 
-textarea{
-    resize: none;
+.modal-status h3{
+    font-size: 26px;
+}
+
+.status {
+    gap: .5rem;
+}
+
+.status > img {
+    width: 3px;
+    height: auto;
+    padding-left: 13%;
 }
 
 .highlighted {
@@ -83,9 +137,4 @@ textarea{
     cursor: pointer;
     color: rgb(24, 167, 185);
     text-decoration: none; /* Mostra o cursor como ponteiro ao passar o mouse */
-}
-
-li {
-    font-weight: bold;
-    text-decoration: underline;
 }
