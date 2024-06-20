@@ -1,7 +1,6 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from .handlers.login import authHand
 
 def index(request):
     if request.method == "GET":
@@ -10,7 +9,7 @@ def index(request):
         username = request.POST.get('username')
         senha = request.POST.get('senha')
 
-        user = authenticate(username=username, password=senha)
+        user = authHand(login=username, password=senha)
 
         if user:
             return render(request, 'orderTable.html')
