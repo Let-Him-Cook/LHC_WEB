@@ -58,8 +58,6 @@ def order_list_view(request):
     else:
         return None
 
-
-
 def get_order_by_id(order_id):
     url = f"{API_BASE_URL}/orders/{order_id}"
     response = requests.get(url)
