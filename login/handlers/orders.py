@@ -1,57 +1,59 @@
 import requests
+from django.shortcuts import render
 
 API_BASE_URL = 'https://lhcapi.azurewebsites.net/api'
 
-def get_all_dishes():
-    url = API_BASE_URL + "/dishes"
+def get_all_orders():
+    url = API_BASE_URL + "/orders"
+    response = requests.get(url)
+
+    if response:
+        try:
+            orders = response.json()
+            # print(f"Orders from API: {orders}")  # Processe cada pedido aqui
+            return orders
+        except Exception as e:
+            print(f"Erro ao extrair dados dos pedidos: {e}")
+            return None
+    else:
+        print("Falha ao recuperar pedidos.")
+        return None
+
+def order_list_view(request):
+    orders = get_all_orders()
+
+    if orders:
+        order_details = []
+        for order in orders:
+            order_info = {
+                'id': order.get('id'),
+                'idClient': order.get('idClient'),
+                'totalPrice': order.get('totalPrice'),
+                'status': order.get('status'),
+                'tableNumber': order.get('tableNumber'),
+                'createdAt': order.get('createdAt'),
+                'updatedAt': order.get('updatedAt')
+            }
+            order_details.append(order_info)
+
+        return order_details
+    else:
+        return None
+
+
+def get_order_by_id(order_id):
+    url = f"{API_BASE_URL}/orders/{order_id}"
     response = requests.get(url)
     print(f"GET {url}")
     print(f"Status Code: {response.status_code}")
 
     if response.status_code == 200:
         try:
-            dishes = response.json()
-            for dish in dishes:
-                print(f"Detalhes do Prato: {dish}")  # Processe cada prato aqui
-            return dishes
+            order_details = response.json()
+            return order_details
         except Exception as e:
-            print(f"Erro ao extrair dados dos pratos: {e}")
+            print(f"Erro ao extrair detalhes do pedido: {e}")
             return None
     else:
-        print("Falha ao recuperar pratos.")
+        print(f"Falha ao recuperar detalhes do pedido {order_id}.")
         return None
-
-def get_dish_by_id(dish_id):
-    url = f"{API_BASE_URL}/dishes/{dish_id}"
-    response = requests.get(url)
-    print(f"GET {url}")
-    print(f"Status Code: {response.status_code}")
-
-    if response.status_code == 200:
-        try:
-            dish_details = response.json()
-            return dish_details
-        except Exception as e:
-            print(f"Erro ao extrair detalhes do prato: {e}")
-            return None
-    else:
-        print(f"Falha ao recuperar detalhes do prato {dish_id}.")
-        return None
-
-# Exemplo de uso
-all_dishes = get_all_dishes()
-if all_dishes:
-    print("Todos os pratos:")
-    for dish in all_dishes:
-        print(dish)
-else:
-    print("Falha ao recuperar pratos.")
-
-# Exemplo de uso para obter detalhes de um prato específico
-dish_id = 123
-dish_details = get_dish_by_id(dish_id)
-if dish_details:
-    print(f"Detalhes do prato {dish_id}:")
-    print(dish_details)
-else:
-    print(f"Falha ao recuperar detalhes do prato {dish_id}.")

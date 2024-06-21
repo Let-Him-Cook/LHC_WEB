@@ -27,28 +27,31 @@
         <!-- Dados -->
         <tr class="data">
             <td class="flex">
-                <div class="pedido pendente flex space-between vcenter column">
-                    <div class="pedido-header flex space-between">
-                        <div class="left column">
-                            <h2># 21</h2>
-                            <h4>Mesa 05</h4>
-                        </div>
-                        <div class="right column">
-                            <div class="timer-box flex vcenter">
-                                <img src="{% static "src/timer.png" %}" alt="Timer-Icon">
-                                <p>0h20min</p>
+            
+                {% for order in orders %}
+                    <div class="pedido pendente flex space-between vcenter column">
+                        <div class="pedido-header flex space-between">
+                            <div class="left column">
+                                <h2># {{ order.id|slice:":3" }}</h2>
+                                <h4>Mesa {{ order.tableNumber }}</h4>
                             </div>
-                            <h4>Genivaldo</h4>
+                            <div class="right column">
+                                <div class="timer-box flex vcenter">
+                                    <img src="{% static 'src/timer.png' %}" alt="Timer-Icon">
+                                    <p>0h20min</p> <!-- Ajustar conforme necessário -->
+                                </div>
+                                <h4>{{ order.idClient|slice:":3" }}</h4> <!-- Filtrar os 3 primeiros dígitos -->
+                            </div>
+                        </div>
+                        <div class="desc">
+                            <div class="buttons flex space-evenly">
+                                <button class="desc-button" onclick="openModal()">Detalhes</button>
+                                <button class="delete-button">Delete</button>
+                            </div>
                         </div>
                     </div>
+                {% endfor %}
 
-                    <div class="desc">
-                        <div class="buttons flex space-evenly">
-                            <button class="desc-button" onclick="openModal()">Detalhes</button>
-                            <button class="delete-button">Delete</button>
-                        </div>
-                    </div>
-                </div>
             </td>
 
             <td class="flex">
