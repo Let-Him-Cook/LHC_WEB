@@ -15,7 +15,7 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     text-align: start;
     width: 75%;
-    height: 75%;
+    height: 80%;
     gap: 1rem;
 }
 
@@ -71,7 +71,7 @@
     flex-direction: column;
     margin: 20px 15px 0 15px;
     padding: 10px;
-    height: 60%;
+    height: 80%;
     gap: 2rem;
     background-color: white;
     border-radius: 10px;
@@ -130,6 +130,24 @@
     width: 3px;
     height: auto;
     padding-left: 13%;
+}
+
+.status-desc h6 {
+    width: 112px;
+}
+
+.modal-buttons button {
+    all: unset;
+    padding: 15px;
+    background-color: #CA6E33;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#closeBtn {
+    background-color: #56D45B;
 }
 
 .highlighted {
