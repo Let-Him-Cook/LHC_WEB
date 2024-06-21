@@ -27,4 +27,4 @@ def pedidos(request):
         }
         return render(request, 'orderTable.html', context)
     else:
-        return HttpResponse('Falha ao recuperar pedidos. Tente novamente mais tarde.')  
+        return HttpResponse('Falha ao recuperar pedidos. Tente novamente mais tarde.')

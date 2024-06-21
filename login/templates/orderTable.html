@@ -46,7 +46,7 @@
                             </div>
                             <div class="desc">
                                 <div class="buttons flex space-evenly">
-                                    <button class="desc-button" onclick="openModal()">Detalhes</button>
+                                    <button class="desc-button" onclick="openModal('{{ order.id }}')">Detalhes</button>
                                     <button class="delete-button">Delete</button>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                             </div>
                             <div class="desc">
                                 <div class="buttons flex space-evenly">
-                                    <button class="desc-button" onclick="openModal()">Detalhes</button>
+                                    <button class="desc-button" onclick="openModal('{{ order.id }}')">Detalhes</button>
                                     <button class="delete-button">Delete</button>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                             </div>
                             <div class="desc">
                                 <div class="buttons flex space-evenly">
-                                    <button class="desc-button" onclick="openModal()">Detalhes</button>
+                                    <button class="desc-button" onclick="openModal('{{ order.id }}')">Detalhes</button>
                                     <button class="delete-button">Delete</button>
                                 </div>
                             </div>
@@ -128,7 +128,7 @@
                             </div>
                             <div class="desc">
                                 <div class="buttons flex space-evenly">
-                                    <button class="desc-button" onclick="openModal()">Detalhes</button>
+                                    <button class="desc-button" onclick="openModal('{{ order.id }}')">Detalhes</button>
                                     <button class="delete-button">Delete</button>
                                 </div>
                             </div>
@@ -141,146 +141,207 @@
     </table>
 
     <!-- Modal -->
-    <div class="modal-backdrop vcenter center" id="modalBackdrop">
-        <div class="modal-box flex column space-between">
+    {% for order in orders %}
+        <div id="modal-{{ order.id }}" class="modal-backdrop vcenter center" id="modalBackdrop">
+            <div class="modal-box flex column space-between">
 
-            <div class="modal-header flex space-between vcenter">
-                <div class="mleft flex column">
-                    <h1>Order #32</h1>
-                    <p>ID: 285710482</p>
-                </div>
+                <div class="modal-header flex space-between vcenter">
+                    <div class="mleft flex column">
+                        <h1>Pedido #{{order.id|slice:":3"}}</h1>
+                        <p>ID: {{order.id|slice:":8"}}</p>
+                    </div>
 
-                <div class="mright flex column">
-                    <h1>Mesa: 05</h1>
-                    <p>29 de Maio de 2024 ás 08:45 </p>
-                </div>
-            </div>
-
-            <div class="modal-column flex space-between">
-                <div class="modal-desc flex column space-between">
-                    <table class="mtable">
-                        <thead>
-                            <tr class="flex space-between">
-                                <th>Order</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="flex space-between">
-                                <td>Batata Frita</td>
-                                <td>02</td>
-                                <td>06.99</td>
-                                <td>13.98</td>
-                            </tr>
-
-                            <tr class="flex space-between">
-                                <td>Batata Frita</td>
-                                <td>02</td>
-                                <td>06.99</td>
-                                <td>13.98</td>
-                            </tr>
-
-                            <tr class="flex space-between">
-                                <td>Batata Frita</td>
-                                <td>02</td>
-                                <td>06.99</td>
-                                <td>13.98</td>
-                            </tr>
-
-                            <tr class="flex space-between">
-                                <td>Batata Frita</td>
-                                <td>02</td>
-                                <td>06.99</td>
-                                <td>13.98</td>
-                            </tr>
-
-                            <tr class="flex space-between">
-                                <td>Batata Frita</td>
-                                <td>02</td>
-                                <td>06.99</td>
-                                <td>13.98</td>
-                            </tr>
-
-                            <tr class="flex space-between">
-                                <td>Batata Frita</td>
-                                <td>02</td>
-                                <td>06.99</td>
-                                <td>13.98</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div class="total-box flex space-between">
-                        <h1>Total</h1>
-                        <h1>R$ 103.32</h1>
+                    <div class="mright flex column">
+                        <h1>Mesa: {{order.tableNumber}}</h1>
+                        <p>{{order.createdAt}}</p>
                     </div>
                 </div>
 
-                <div class="modal-status flex column">
-                    <h3>Status</h3>
+                <div class="modal-column flex space-between">
+                    <div class="modal-desc flex column space-between">
+                        <table class="mtable">
+                            <thead>
+                                <tr class="flex space-between">
+                                    <th>Order</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="flex space-between">
+                                    <td>Batata Frita</td>
+                                    <td>02</td>
+                                    <td>06.99</td>
+                                    <td>13.98</td>
+                                </tr>
 
-                    <div class="status flex column">
+                                <tr class="flex space-between">
+                                    <td>Batata Frita</td>
+                                    <td>02</td>
+                                    <td>06.99</td>
+                                    <td>13.98</td>
+                                </tr>
 
-                        <div class="status-block flex space-evenly vcenter">
-                            <img src="{% static "src/Waiting-Icon.png" %}" alt="">
-                            <div class="status-desc">
-                                <h5>Aguardando</h5>
-                                <h6>29/06/2024 ás 14:40</h6>
-                            </div>
-                            <img src="{% static "src/Checked-Icon.png" %}" alt="">
+                                <tr class="flex space-between">
+                                    <td>Batata Frita</td>
+                                    <td>02</td>
+                                    <td>06.99</td>
+                                    <td>13.98</td>
+                                </tr>
+
+                                <tr class="flex space-between">
+                                    <td>Batata Frita</td>
+                                    <td>02</td>
+                                    <td>06.99</td>
+                                    <td>13.98</td>
+                                </tr>
+
+                                <tr class="flex space-between">
+                                    <td>Batata Frita</td>
+                                    <td>02</td>
+                                    <td>06.99</td>
+                                    <td>13.98</td>
+                                </tr>
+
+                                <tr class="flex space-between">
+                                    <td>Batata Frita</td>
+                                    <td>02</td>
+                                    <td>06.99</td>
+                                    <td>13.98</td>
+                                </tr>
+
+                                <tr class="flex space-between">
+                                    <td>Batata Frita</td>
+                                    <td>02</td>
+                                    <td>06.99</td>
+                                    <td>13.98</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="total-box flex space-between">
+                            <h1>Total</h1>
+                            <h1>R$ 103.32</h1>
                         </div>
+                    </div>
 
-                        <img src="{% static "src/GreenSegment-Line.png" %}" alt="">
+                    <div class="modal-status flex column">
+                        <h3>Status</h3>
 
-                        <div class="status-block flex space-evenly vcenter">
-                            <img src="{% static "src/Cooking-Icon.png" %}" alt="">
-                            <div class="status-desc">
-                                <h5>Cozinhando</h5>
-                                <h6>--</h6>
+                        <div class="status flex column">
+
+                            <div class="status-block flex space-evenly vcenter">
+                                <img src="{% static "src/Waiting-Icon.png" %}" alt="">
+                                <div class="status-desc">
+                                    <h5>Aguardando</h5>
+                                    <h6>{{order.createdAt}}</h6>
+                                </div>
+                                <img src="{% static "src/Checked-Icon.png" %}" alt="">
                             </div>
-                            <img src="{% static "src/phase-wait.png" %}" alt="">
-                        </div>
 
-                        <img src="{% static "src/Segment-Line.png" %}" alt="">
+                            <img src="{% static "src/GreenSegment-Line.png" %}" alt="">
 
-                        <div class="status-block flex space-evenly vcenter">
-                            <img src="{% static "src/Serving-Icon.png" %}" alt="">
-                            <div class="status-desc">
-                                <h5>Concluido</h5>
-                                <h6>---</h6>
+                            <div class="status-block flex space-evenly vcenter">
+                                <img src="{% static "src/Cooking-Icon.png" %}" alt="">
+                                <div class="status-desc">
+                                    <h5>Cozinhando</h5>
+                                    <h6>--</h6>
+                                </div>
+                                <img src="{% static "src/phase-wait.png" %}" alt="">
                             </div>
-                            <img src="{% static "src/phase-wait.png" %}" alt="">
-                        </div>
 
-                        <img src="{% static "src/Segment-Line.png" %}" alt="">
+                            <img src="{% static "src/Segment-Line.png" %}" alt="">
 
-                        <div class="status-block flex space-evenly vcenter">
-                            <img src="{% static "src/Delivered-Icon.png" %}" alt="">
-                            <div class="status-desc">
-                                <h5>Entregue</h5>
-                                <h6>--</h6>
+                            <div class="status-block flex space-evenly vcenter">
+                                <img src="{% static "src/Serving-Icon.png" %}" alt="">
+                                <div class="status-desc">
+                                    <h5>Concluido</h5>
+                                    <h6>---</h6>
+                                </div>
+                                <img src="{% static "src/phase-wait.png" %}" alt="">
                             </div>
-                            <img src="{% static "src/phase-wait.png" %}" alt="">
-                        </div>
 
+                            <img src="{% static "src/Segment-Line.png" %}" alt="">
+
+                            <div class="status-block flex space-evenly vcenter">
+                                <img src="{% static "src/Delivered-Icon.png" %}" alt="">
+                                <div class="status-desc">
+                                    <h5>Entregue</h5>
+                                    <h6>--</h6>
+                                </div>
+                                <img src="{% static "src/phase-wait.png" %}" alt="">
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="modal-buttons flex space-between">
-                <button onclick="closeModal()">Fechar</button>
-                <button onclick="#" id="closeBtn">Avançar</button>
-            </div>
+                <div class="modal-buttons flex space-between">
+                    <button onclick="closeModal('{{ order.id }}')">Fechar</button>
+                    <button onclick="" id="closeBtn">Avançar</button>
+                </div>
 
+            </div>
         </div>
-    </div>
+    {% endfor %}
 
     <!-- ModalFunc -->
-    <script src="{% static "js/modalFunctions.js" %}"></script>
+    {% comment %} <script src="{% static "js/modalFunctions.js" %}"></script> {% endcomment %}
 
     <!-- TableFunc -->
     <script src="{% static "js/tableFunctions.js" %}"></script>
+
+    <script>
+        function openModal(orderId) {
+            console.log(`Attempting to open modal for order ID: ${orderId}`);
+            const modal = document.getElementById(`modal-${orderId}`);
+            if (modal) {
+                modal.style.display = 'flex';
+            } else {
+                console.error(`Modal with ID modal-${orderId} not found.`);
+            }
+        }
+
+        function closeModal(orderId) {
+            console.log(`Attempting to close modal for order ID: ${orderId}`);
+            const modal = document.getElementById(`modal-${orderId}`);
+            if (modal) {
+                modal.style.display = 'none';
+            } else {
+                console.error(`Modal with ID modal-${orderId} not found.`);
+            }
+        }
+
+        // Add event listener for modal backdrop to close modal when clicked outside
+        document.querySelectorAll('.modal-backdrop').forEach(modal => {
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        function trocarTexto(sobre) {
+            // Seleciona o elemento pelo ID
+            var elemento = document.getElementById('trocarTexto');
+
+            // Verifica se estamos passando o mouse sobre o elemento
+            if (sobre) {
+                // Armazena o texto original apenas uma vez
+                if (textoOriginal === "") {
+                    textoOriginal = elemento.innerHTML;
+                }
+                // Troca o texto para o novo texto
+                elemento.innerHTML = "ID PRATO";
+                elemento.classList.add('highlighted'); // Adiciona a classe de destaque
+            } else {
+                // Se não estiver mais sobre o elemento, restaura o texto original
+                elemento.innerHTML = textoOriginal;
+                elemento.classList.remove('highlighted'); // Remove a classe de destaque
+            }
+        }
+
+    </script>
 </body>
 </html>
